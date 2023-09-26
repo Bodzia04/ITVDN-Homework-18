@@ -112,39 +112,62 @@
         Добавьте код, обрабатывающий исключение.
         */
 
-        class DivideByZeroError{
-                constructor(operand1, operand2){
-                        this.operand1 = operand1;
-                        this.operand2 = operand2;
-                }
+        // class DivideByZeroError{
+        //         constructor(operand1, operand2){
+        //                 this.operand1 = operand1;
+        //                 this.operand2 = operand2;
+        //         }
 
-                audit(){
-                        if(this.operand1 === 0 || this.operand2 === 0){
-                                throw new Error('Cannot be divided by 0');
-                        } else {
-                                return this.operand1 / this.operand2;
-                        }
-                }
+        //         audit(){
+        //                 if(this.operand1 === 0 || this.operand2 === 0){
+        //                         throw new Error('Cannot be divided by 0');
+        //                 } else {
+        //                         return this.operand1 / this.operand2;
+        //                 }
+        //         }
 
 
-        };
+        // };
 
-        function divide(operand1, operand2) {
+        // function divide(operand1, operand2) {
  
-                try{
-                        let instanceOfTheClass = new DivideByZeroError(operand1, operand2);
-                        return instanceOfTheClass.audit();
-                }catch(error){
-                        return error.message;
-                }
+        //         try{
+        //                 let instanceOfTheClass = new DivideByZeroError(operand1, operand2);
+        //                 return instanceOfTheClass.audit();
+        //         }catch(error){
+        //                 return error.message;
+        //         }
                 
-        }
+        // }
     
-        console.log(divide(10, 5));
-        console.log(divide(100, 0));
-        console.log(divide(1000, 50));
+        // console.log(divide(10, 5));
+        // console.log(divide(100, 0));
+        // console.log(divide(1000, 50));
         
 //////////////////////////////////////////////////
+
+        /*
+        Задание 5:
+        Внесите правки в код, не изменяя последовательность инструкций в функции operation сделайте так
+        чтобы строка "Освобождение ресурсов" выводилась каждый раз, когда запускалась функция operation.
+        */
+
+        function operation() {
+                try{
+                        console.log("Выделение ресурсов");
+                        return "Результат операции";
+                } finally{
+                        console.log("Освобождение ресурсов");
+                }
+
+        }
+
+        operation();
+        operation();
+        operation();
+        
+//////////////////////////////////////////////////
+        
 
 
 
