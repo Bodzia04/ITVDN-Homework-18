@@ -46,65 +46,107 @@
         Задание 3:
         Добавьте в данный сценарий обработку исключений для той части кода, где исключение может возникнуть.
         */
-        class Rect {
-            constructor(width, height) {
-                this.width = width;
-                this.height = height;
-            }
+        // class Rect {
+        //     constructor(width, height) {
+        //         this.width = width;
+        //         this.height = height;
+        //     }
 
-            get width() {
-                if (this._width === undefined) {
-                    this._width = 0;
+        //     get width() {
+        //         if (this._width === undefined) {
+        //             this._width = 0;
+        //         }
+
+        //         return this._width;
+        //     }
+
+        //     set width(value) {
+        //         if (value < 0) {
+        //             throw new Error("Значение для width не может быть меньше 0");
+        //         } else {
+        //             this._width = value;
+        //         }
+        //     }
+
+        //     get height() {
+        //         if (this._height === undefined) {
+        //             this._height = 0;
+        //         }
+
+        //         return this._height;
+        //     }
+
+        //     set height(value) {
+        //         if (value < 0) {
+        //             throw new Error("Значение для height не может быть меньше 0");
+        //         } else {
+        //             this._height = value;
+        //         }
+        //     }
+
+        //     get area() {
+        //         return this.height * this.width;
+        //     }
+        // }
+
+        // let r1 = new Rect(10, 20);
+
+        // try{
+        //     r1.height = -10; // ошибка
+        //     r1.width = 30;
+        // } catch(error){
+        //     console.error(error.message);
+        // }
+
+        // console.log("width " + r1.width);
+        // console.log("height " + r1.height);
+        // console.log("area " + r1.area);
+        
+//////////////////////////////////////////////////
+
+
+        /*
+        Задание 4:
+        Создайте пользовательский класс исключения DivideByZeroError
+        Сделайте так, чтобы функция divide при попытке деления на 0 выбрасывала эту ошибку.
+        Добавьте код, обрабатывающий исключение.
+        */
+
+        class DivideByZeroError{
+                constructor(operand1, operand2){
+                        this.operand1 = operand1;
+                        this.operand2 = operand2;
                 }
 
-                return this._width;
-            }
-
-            set width(value) {
-                if (value < 0) {
-                    throw new Error("Значение для width не может быть меньше 0");
-                } else {
-                    this._width = value;
-                }
-            }
-
-            get height() {
-                if (this._height === undefined) {
-                    this._height = 0;
+                audit(){
+                        if(this.operand1 === 0 || this.operand2 === 0){
+                                throw new Error('Cannot be divided by 0');
+                        } else {
+                                return this.operand1 / this.operand2;
+                        }
                 }
 
-                return this._height;
-            }
 
-            set height(value) {
-                if (value < 0) {
-                    throw new Error("Значение для height не может быть меньше 0");
-                } else {
-                    this._height = value;
+        };
+
+        function divide(operand1, operand2) {
+ 
+                try{
+                        let instanceOfTheClass = new DivideByZeroError(operand1, operand2);
+                        return instanceOfTheClass.audit();
+                }catch(error){
+                        return error.message;
                 }
-            }
-
-            get area() {
-                return this.height * this.width;
-            }
+                
         }
-
-        let r1 = new Rect(10, 20);
-
-        try{
-            r1.height = -10; // ошибка
-            r1.width = 30;
-        } catch(error){
-            console.error(error.message);
-        }
-
-        console.log("width " + r1.width);
-        console.log("height " + r1.height);
-        console.log("area " + r1.area);
     
+        console.log(divide(10, 5));
+        console.log(divide(100, 0));
+        console.log(divide(1000, 50));
+        
+//////////////////////////////////////////////////
 
-// TODO:
-        // в Task 3 я нічого не писав. потріно створити set area() і помістити throw
-    
 
-    
+
+
+        
