@@ -103,8 +103,7 @@
         // console.log("area " + r1.area);
         
 //////////////////////////////////////////////////
-
-
+        
         /*
         Задание 4:
         Создайте пользовательский класс исключения DivideByZeroError
@@ -112,37 +111,21 @@
         Добавьте код, обрабатывающий исключение.
         */
 
-        // class DivideByZeroError{
-        //         constructor(operand1, operand2){
-        //                 this.operand1 = operand1;
-        //                 this.operand2 = operand2;
-        //         }
+        class DivideByZeroError extends Error{
+                constructor(){
+                        super('Попытка деления на 0');
+                        this.name = 'DivideByZeroError';
+                }
+        }
 
-        //         audit(){
-        //                 if(this.operand1 === 0 || this.operand2 === 0){
-        //                         throw new Error('Cannot be divided by 0');
-        //                 } else {
-        //                         return this.operand1 / this.operand2;
-        //                 }
-        //         }
+        function divide(operand1, operand2) {
+                if(operand2 == 0) throw new DivideByZeroError();
+                return operand1 / operand2;
+        }
 
-
-        // };
-
-        // function divide(operand1, operand2) {
- 
-        //         try{
-        //                 let instanceOfTheClass = new DivideByZeroError(operand1, operand2);
-        //                 return instanceOfTheClass.audit();
-        //         }catch(error){
-        //                 return error.message;
-        //         }
-                
-        // }
-    
-        // console.log(divide(10, 5));
-        // console.log(divide(100, 0));
-        // console.log(divide(1000, 50));
+        console.log(divide(10, 5));
+        console.log(divide(100, 0));
+        console.log(divide(1000, 50));
         
 //////////////////////////////////////////////////
 
@@ -152,19 +135,19 @@
         чтобы строка "Освобождение ресурсов" выводилась каждый раз, когда запускалась функция operation.
         */
 
-        function operation() {
-                try{
-                        console.log("Выделение ресурсов");
-                        return "Результат операции";
-                } finally{
-                        console.log("Освобождение ресурсов");
-                }
+        // function operation() {
+        //         try{
+        //                 console.log("Выделение ресурсов");
+        //                 return "Результат операции";
+        //         } finally{
+        //                 console.log("Освобождение ресурсов");
+        //         }
 
-        }
+        // }
 
-        operation();
-        operation();
-        operation();
+        // operation();
+        // operation();
+        // operation();
         
 //////////////////////////////////////////////////
         
